@@ -10,6 +10,8 @@ require(`./themes/app.${__THEME}.styl`)
 // require(`quasar/dist/quasar.ie`)
 // require(`quasar/dist/quasar.ie.${__THEME}.css`)
 
+window.jQuery = require('jquery')
+
 import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'

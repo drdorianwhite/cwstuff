@@ -7,34 +7,153 @@
     
   <cheader></cheader>
   <div class="chartview">
+  
     <div class="sortbar">
-      <q-list link>
-  <!--
-    Rendering a <label> tag (notice tag="label")
-    so the whole QItem will respond to clicks to
-    change Toggle state.
-  -->
-  <q-item tag="label">
-    <q-item-side>
-      <q-radio v-model="option" val="opt1" />
-    </q-item-side>
-    <q-item-main>
-      <q-item-tile label>Option 1</q-item-tile>
-    </q-item-main>
-  </q-item>
-  <q-item tag="label">
-    <q-item-side>
-      <q-radio v-model="option" val="opt2" />
-    </q-item-side>
-    <q-item-main>
-      <q-item-tile label>Option 2</q-item-tile>
-      <q-item-tile sublabel>Allows notifications</q-item-tile>
-    </q-item-main>
-  </q-item>
-</q-list>
+      <p>Sort by</p>
+      <q-tabs class="sortoptions">
+      <q-tab class="chartsort" v-model="chartsort" label="price"/>
+      <q-tab class="chartsort"  v-model="chartsort" label="24 hour change"/>
+      <q-tab class="chartsort"  v-model="chartsort" label="7 day change"/>
+      <q-tab class="chartsort"  v-model="chartsort" label="24 hour volume"/>
+      <q-tab class="chartsort"  v-model="chartsort" label="Coin supply"/>
+      <q-tab class="chartsort"  v-model="chartsort" label="Market cap"/>
+      <q-tab class="chartsort"  v-model="chartsort" label="Circulating Supply"/>
+      </q-tabs>
     </div>
     <div class="tablecontent">
-      <table>
+      <table class="table">
+        <tr>
+          <th>#</th>
+          <th>COIN</th>
+          <th>FAVORITE</th>
+          <th>PRICE</th>
+          <th>24HR<br>CHANGE</th>
+          <th>7DAY<br>CHANGE</th>
+          <th>24HR<br>VOLUME</th>
+          <th>MARKET CAP</th>
+          <th>CIRCULATING<br>SUPPLY</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
 
       </table>
     
@@ -68,6 +187,17 @@ import {
 } from 'quasar'
 
 import Cheader from './Cheader'
+/*
+$(document).ready(function(){
+  var changeActive = function() {
+    $('.q-option-inner').parent().parent().removeClass('active');
+    $('.q-option-inner.active').parent().parent().addClass('active');
+  }
+  $('.q-list').on('click', function() {
+    setTimeout(changeActive, 00);
+  });
+});
+*/
 
 const
   { viewport } = dom,
@@ -208,11 +338,33 @@ export default {
 </script>
 
 <style lang="stylus">
+.tablecontent
+  float left
+  margin-left 50px
+  margin-top 50px
+.table
+  text-align: center;
+  width: 800px;
+.table > tr > th
+  background-color #aaaaaa
+.table > tr > td
+  background-color #333333
+  padding: 5px
+.chartsort
+  font-size .8rem
+.chartsort.active
+  background-color cyan
+input:checked 
+  background-color white
 .sortbar
+  color white
+  margin-left: 20px
   float left 
   margin-top 20px
-  max-width 100px
-  background-color  white
+  max-width 150px
+.sortoptions
+    background-color  #333333
+    text-align left
 .chartview
   margin-top 5px
   height 500px

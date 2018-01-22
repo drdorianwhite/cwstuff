@@ -5,9 +5,12 @@
         <div class="toolbarcontainer">
           <q-tabs class="topmenu">
             <q-route-tab class="topmenutab" label="Home" to="/" slot="title" />
+            <q-route-tab class="topmenutab" label="Portfolio" to="/portfolio" slot="title" />
+            <q-route-tab class="topmenutab" label="Rankings" to="/rankings" slot="title" />
+            <q-route-tab class="topmenutab" label="Exchanges" to="/exchanges" slot="title" />
             <q-route-tab  label="Tutorials" to="/tutorials" slot="title" />
           </q-tabs>
-          <q-search class="bg-white searchbox" />
+          <q-search class="bg-white searchbox" placeholder="" />
         </div>
       </div>
       <div class="login">
@@ -184,6 +187,7 @@ export default {
   margin-left: 100px
   float left
 .topmenutab
+  padding-right: 10px
   border-right-width: 1px
   border-right-color: cyan
   border-right-style: solid
