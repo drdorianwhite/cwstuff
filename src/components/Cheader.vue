@@ -1,4 +1,5 @@
 <template>
+<div>
     <q-toolbar class="toolbar" slot="header" >
       <div class="headercontainer">
         <img src="statics/coinwave.jpg" class="headerlogo" >
@@ -6,20 +7,30 @@
           <q-tabs class="topmenu">
             <q-route-tab class="topmenutab" label="Home" to="/" slot="title" />
             <q-route-tab class="topmenutab" label="Portfolio" to="/portfolio" slot="title" />
-            <q-route-tab class="topmenutab" label="Rankings" to="/rankings" slot="title" />
+            <q-route-tab class="topmenutab" label="Coins" to="/coins" slot="title" />
             <q-route-tab class="topmenutab" label="Exchanges" to="/exchanges" slot="title" />
-            <q-route-tab  label="Tutorials" to="/tutorials" slot="title" />
+            <q-route-tab class="topmenutab" label="Tutorials" to="/tutorials" slot="title" />
+            <q-route-tab class="topmenutab" label="Tools" to="/tutorials" slot="title" />
+            <q-route-tab class="topmenutab" label="Settings" to="/tutorials" slot="title" />
           </q-tabs>
           <q-search class="bg-white searchbox" placeholder="" />
         </div>
       </div>
       <div class="login">
         <div class="login-register">
-          <p class="logintext"><a href="#">Login</a> / <a href="#">Regsiter</a></p>
-          <div class="social"><img class="fbicon" src="statics/fbcircle.png"></div>
+          <p class="logintext"><q-btn class="registerbutton" @click="$refs.registerModal.open()">Login</q-btn> <br>or<br><q-btn class="registerbutton" @click="$refs.registerModal.open()">Register</q-btn></p>
         </div>
-    </div>
+      </div>
+      <div class="socialbuttons">
+      <p class="followtext">Follow us</p>
+      <div class="socialbuttons">
+        <img src="statics/fb.png" class="fbbutton" />
+        <img src="statics/youtube.jpeg" class="youtubebutton" />
+      </div>
+      </div>
     </q-toolbar>
+    
+    </div>
 </template>
 <script>
 import {
@@ -39,7 +50,8 @@ import {
   QItemMain,
   QTabs,
   QTab,
-  QRouteTab
+  QRouteTab,
+  QModal
 } from 'quasar'
 const
   { viewport } = dom,
@@ -75,7 +87,8 @@ export default {
     QTabs,
     QTab,
     QSearch,
-    QRouteTab
+    QRouteTab,
+    QModal
   },
   data () {
     return {
@@ -177,27 +190,27 @@ export default {
 
 <style lang="stylus">
 .headercontainer
-  width 100%
+  width 900px
 .headerlogo
   float left
+  height 100px
 .toolbarcontainer
-  margin-top 5%
-  float right
+  margin-top 40px
+  float left
 .topmenu
-  margin-left: 100px
+  margin-left 20px
+  margin-right 20px
   float left
 .topmenutab
   padding-right: 10px
-  border-right-width: 1px
-  border-right-color: cyan
-  border-right-style: solid
+  padding-left 10px
 .searchbox 
   max-width 150px
-.login
-  width: 15%
+.login 
+  float left
 .logintext
   font-size .8rem
-  text-align right
+  text-align  center
 .fbicon
   width 24px
   height 24px
@@ -213,4 +226,17 @@ export default {
 .logo
   position absolute
   transform-style preserve-3d
+.registerbutton
+  color white
+  background-color black
+.socialbuttons
+    width 150px
+    color gray
+.followtext
+  border-bottom-style solid
+.fbbutton
+  width 100px
+  margin-right 10px
+.youtubebutton
+  width 30px
 </style>

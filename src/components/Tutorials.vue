@@ -170,32 +170,4 @@ export default {
 </script>
 
 <style lang="stylus">
-.topmenu
-  margin-left: 100px
-.topmenutab
-  border-right-width: 1px
-  border-right-color: cyan
-  border-right-style: solid
-.searchbox 
-  max-width 150px
-.login
-  float right
-  margin-left: 30px
-.logintext
-  font-size .8rem
-.fbicon
-  width 24px
-  height 24px
-  float right
-.logo-container
-  width 255px
-  height 242px
-  perspective 800px
-  position absolute
-  top 50%
-  left 50%
-  transform translateX(-50%) translateY(-50%)
-.logo
-  position absolute
-  transform-style preserve-3d
 </style>

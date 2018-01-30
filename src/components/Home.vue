@@ -1,28 +1,61 @@
+
 <template>
   <q-layout
     ref="layout"
     view="lHh Lpr fff"
     :left-class="{'bg-grey-2': true}"
   >   
-    
+  <q-modal ref="registerModal" minimize>
+      <h4>Register as New User</h4>
+       <q-btn color="primary" @click="$refs.registerModal.close()">Close</q-btn>
+  </q-modal>
+
   <cheader></cheader>
+   <q-fixed-position corner="top-right" :offset="[18, 18]">
+     <div class="stickybar">
+        <div class="refreshratebutton stickybutton stickyitem"><q-icon name="alarm" />Price Refresh Rate</div>
+        <div class="colorsetting stickybutton stickyitem"><q-icon name="color_lens" />Site Colors</div>
+         <q-select class="stickyitem stickyselect" v-model="selectCurrency" :options="selectCurrencyOptions" />
+         <q-select class="stickyitem stickyselect" v-model="selectLanguage" :options="selectLanguageOptions" />
+        <q-btn class="save" @click="alert">Save</q-btn>
+     </div>
+  </q-fixed-position>
+
   <div class="chartview">
   
     <div class="sortbar">
-      <p>Sort by</p>
-      <q-tabs class="sortoptions">
-      <q-tab class="chartsort" v-model="chartsort" label="price"/>
-      <q-tab class="chartsort"  v-model="chartsort" label="24 hour change"/>
-      <q-tab class="chartsort"  v-model="chartsort" label="7 day change"/>
-      <q-tab class="chartsort"  v-model="chartsort" label="24 hour volume"/>
-      <q-tab class="chartsort"  v-model="chartsort" label="Coin supply"/>
-      <q-tab class="chartsort"  v-model="chartsort" label="Market cap"/>
-      <q-tab class="chartsort"  v-model="chartsort" label="Circulating Supply"/>
-      </q-tabs>
+      <q-list class="sortlist">
+        <q-collapsible opened class="columnhead sortby" icon="none" label="Sort By">
+          <div class="sortcontainer">
+            <q-tabs class="sortoptions">
+              <q-tab class="chartsort" v-model="chartsort" label="price"/>
+              <q-tab class="chartsort"  v-model="chartsort" label="24 hour change"/>
+              <q-tab class="chartsort"  v-model="chartsort" label="7 day change"/>
+              <q-tab class="chartsort"  v-model="chartsort" label="24 hour volume"/>
+              <q-tab class="chartsort"  v-model="chartsort" label="Coin supply"/>
+              <q-tab class="chartsort"  v-model="chartsort" label="Market cap"/>
+              <q-tab class="chartsort"  v-model="chartsort" label="Circulating Supply"/>
+            </q-tabs>
+          </div>
+        </q-collapsible>
+        <q-collapsible class="columnhead" icon="fa-filter" label="Advanced Search">
+          <div> 
+          </div>
+        </q-collapsible>
+      </q-list>
     </div>
     <div class="tablecontent">
+
       <table class="table">
+        <colgroup>
+        <col width="5%">
+        <col width="5%">
+        <col width="10%">
+        <col width="10%">  
+        </colgroup>      
         <tr>
+          <th>More Info</th>
+          <th>Options</th>
           <th>#</th>
           <th>COIN</th>
           <th>FAVORITE</th>
@@ -31,130 +64,15 @@
           <th>7DAY<br>CHANGE</th>
           <th>24HR<br>VOLUME</th>
           <th>MARKET CAP</th>
-          <th>CIRCULATING<br>SUPPLY</th>
+          <th>24HR<br>HIGH</th>
+          <th>24HR<br>LOW</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-
+        <tbody v-for="row in tableData">
+            <tr><td></td><td></td><td></td><td>{{row.coin}}</td><td>{{row.price}}</td><td>{{row.coin}}</td><td>{{row.coin}}</td><td>{{row.coin}}</td><td>{{row.coin}}</td><td>{{row.coin}}</td></tr>
+            <tr class="chartrow"><td colspan="12"><div class="chartsection"><coinchart></coinchart>
+            </div></td></tr>
+        </tbody>
+        
       </table>
     
     </div>
@@ -183,10 +101,16 @@ import {
   QTab,
   QRouteTab,
   QRadio,
-  QItemTile
+  QItemTile,
+  QCollapsible,
+  QModal,
+  QSelect
 } from 'quasar'
 
+import 'quasar-extras/fontawesome'
+
 import Cheader from './Cheader'
+import Coinchart from './Coinchart'
 /*
 $(document).ready(function(){
   var changeActive = function() {
@@ -236,7 +160,11 @@ export default {
     QSearch,
     QRouteTab,
     Cheader,
-    QRadio
+    QRadio,
+    QCollapsible,
+    QModal,
+    QSelect,
+    Coinchart
   },
   data () {
     return {
@@ -246,7 +174,40 @@ export default {
       moveY: 0,
       rotateY: 0,
       rotateX: 0,
-      option: ['opt1']
+      option: ['opt1'],
+      selectCurrencyOptions: [
+        {
+          label: 'USD',
+          value: 'usd'
+        },
+        {
+          label: 'Euro',
+          value: 'euro'
+        }
+      ],
+      selectLanguageOptions: [
+        {
+          label: 'English',
+          value: 'english'
+        },
+        {
+          label: 'German',
+          value: 'german'
+        }
+      ],
+      tableData: [
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'},
+        {coin: 'Bitcoin', price: '15000.00', d24hrchange: '1000', d7daychange: '1500', marketcap: '100000', d24hrhigh: '16000', d24hrlow: '14000'}
+      ]
     }
   },
   computed: {
@@ -338,15 +299,52 @@ export default {
 </script>
 
 <style lang="stylus">
+.chartsection
+  height 100px
+.stickybar
+  height: 100px
+  width: 100%
+  background-color #333333
+  margin 5px
+  padding 5px
+.stickyitem
+  float left 
+.stickyselect
+  width 100px
+.stickybutton
+  padding 35px
+  float left
+  height 100%
+  border-right-color white
+  border-right-style solid
+  color white
+.save 
+  background-color cyan
+  float right
+  margin-right 200px
+  width 80px
+  height 30px
 .tablecontent
   float left
   margin-left 50px
-  margin-top 50px
 .table
-  text-align: center;
-  width: 800px;
+  text-align center;
+  color white
+  width 800px
 .table > tr > th
   background-color #aaaaaa
+.columnhead
+  background-color #aaaaaa
+  font-size .9rem 
+  color black
+.q-tabs-head 
+  min-height 0
+.sortby .q-item .q-item-side-left
+  width 0
+.sortlist
+  padding 0
+.q-item-label
+  text-align center
 .table > tr > td
   background-color #333333
   padding: 5px
@@ -360,41 +358,22 @@ input:checked
   color white
   margin-left: 20px
   float left 
-  margin-top 20px
-  max-width 150px
+  margin-top 0
+  min-width 10%
+  max-width 20%
+.sortcontainer
+  padding 0
+.q-collapsible-sub-item
+  padding 0
+.q-item-side
+  min-width 0
 .sortoptions
     background-color  #333333
     text-align left
+    padding 0
 .chartview
   margin-top 5px
   height 500px
+  padding-top 30px
   background-color black
-.topmenu
-  margin-left: 100px
-.topmenutab
-  border-right-width: 1px
-  border-right-color: cyan
-  border-right-style: solid
-.searchbox 
-  max-width 150px
-.login
-  float right
-  margin-left: 30px
-.logintext
-  font-size .8rem
-.fbicon
-  width 24px
-  height 24px
-  float right
-.logo-container
-  width 255px
-  height 242px
-  perspective 800px
-  position absolute
-  top 50%
-  left 50%
-  transform translateX(-50%) translateY(-50%)
-.logo
-  position absolute
-  transform-style preserve-3d
 </style>
