@@ -13,10 +13,14 @@ require(`./themes/app.${__THEME}.styl`)
 window.jQuery = require('jquery')
 
 import Vue from 'vue'
+import VueResource from 'vue-resource'
+
 import Quasar from 'quasar'
 import router from './router'
 
 Vue.config.productionTip = false
+Vue.use(VueResource)
+Vue.http.options.emulateJSON = true
 Vue.use(Quasar) // Install Quasar Framework
 
 if (__THEME === 'mat') {

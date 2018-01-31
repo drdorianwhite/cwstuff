@@ -6,10 +6,30 @@
     :left-class="{'bg-grey-2': true}"
   >   
   <q-modal ref="registerModal" minimize>
-      <h4>Register as New User</h4>
-       <q-btn color="primary" @click="$refs.registerModal.close()">Close</q-btn>
+    <div class="cwmodal">
+      <q-btn class="xclosebtn" color="primary" @click="$refs.registerModal.close()">X</q-btn>
+      <p>Register as New User</p>
+      <form  v-on:submit.prevent>
+        <input v-model="email" placeholder="email">
+        <input v-model="password" type="password" placeholder="password" >
+        <button @click="register">Register</button>
+      </form>
+   </div>    
   </q-modal>
-
+<!--
+<q-modal ref="loginModal" minimize>
+  <div class="cwmodal">
+    
+      <p><h4>Login</h4><q-btn color="primary" @click="$refs.registerModal.close()">X</q-btn></p>
+      <form method="post" v-on:submit="login">
+        <input v-model="email" placeholder="email">
+        <input v-model="password" type="password" placeholder="password" >
+        <button type="submit">Login</button>
+      </form>
+      <q-btn color="primary" @click="$refs.registerModal.close()">Close</q-btn>
+  </div>
+  </q-modal>
+-->
   <cheader></cheader>
    <q-fixed-position corner="top-right" :offset="[18, 18]">
      <div class="stickybar">
@@ -17,7 +37,7 @@
         <div class="colorsetting stickybutton stickyitem"><q-icon name="color_lens" />Site Colors</div>
          <q-select class="stickyitem stickyselect" v-model="selectCurrency" :options="selectCurrencyOptions" />
          <q-select class="stickyitem stickyselect" v-model="selectLanguage" :options="selectLanguageOptions" />
-        <q-btn class="save" @click="alert">Save</q-btn>
+        <q-btn class="save" @click="$refs.registerModal.open()">Save</q-btn>
      </div>
   </q-fixed-position>
 
@@ -108,6 +128,7 @@ import {
 } from 'quasar'
 
 import 'quasar-extras/fontawesome'
+import axios from 'axios'
 
 import Cheader from './Cheader'
 import Coinchart from './Coinchart'
@@ -223,6 +244,30 @@ export default {
     }
   },
   methods: {
+    register () {
+      /*
+      this.$http.post('http://localhost:3000/auth/register/', {
+          email: this.email,
+          password: this.password
+        }, function(response) {
+          $refs.registerModal.close()
+          alert(response)
+        })
+      */
+      axios.post('/auth/register', {
+        email: this.email,
+        password: this.password
+      })
+        .then(response => {
+          alert(reponse)
+          $refs.registerModal.close()
+        })
+        .catch(e => {
+          this.errors.push(e)
+          alert(e)
+        })
+        
+    },
     launch (url) {
       openURL(url)
     },
@@ -299,6 +344,11 @@ export default {
 </script>
 
 <style lang="stylus">
+.cwmodal
+  width 100%
+  height 100%
+  background-color black
+  color white
 .chartsection
   height 100px
 .stickybar
